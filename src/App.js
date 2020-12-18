@@ -5,12 +5,7 @@ import axios from "axios";
 
 class App extends Component {
     state = {
-        pokemons: [
-            {
-                url: "valemi",
-                name: "kukika",
-            },
-        ],
+        pokemons: [],
     };
 
     componentDidMount() {
@@ -23,7 +18,7 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App" style={{background: 'gray'}}>
+            <div className="App" style={appStyle}>
                 <div
                     className="pokemon-container"
                     style={pokemonContainerStyle}
@@ -35,14 +30,20 @@ class App extends Component {
     }
 }
 
+const appStyle = {
+    display: "flex",
+    justifyContent: "center",
+    background: "gray",
+};
+
 const pokemonContainerStyle = {
-    background: '#fff',
-    display: 'flex',
-    flexFlow: 'row wrap',
-    justifyContent: 'center',
-    margin: 'auto 20rem auto 20rem',
-    borderRadius: '1rem',
-    padding: '2rem'
+    background: "#fff",
+    display: "flex",
+    flexFlow: "row wrap",
+    justifyContent: "center",
+    margin: "auto 20rem auto 20rem",
+    borderRadius: "1rem",
+    padding: "2rem",
 };
 
 export default App;

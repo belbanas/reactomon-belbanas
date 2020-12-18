@@ -7,25 +7,26 @@ export class PokemonItem extends Component {
     };
 
     componentDidMount() {
-        axios
-            .get(this.props.url)
-            .then((response) =>
-                this.setState({
-                    image:
-                        response.data.sprites.other.dream_world.front_default,
-                })
-            );
+        axios.get(this.props.url).then((response) =>
+            this.setState({
+                image: response.data.sprites.other.dream_world.front_default,
+            })
+        );
     }
 
     capitalize = (str) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
-    }
+    };
 
     render() {
         return (
             <div className="pokemon-item-container" style={containerStyle}>
-                <img src={this.state.image} alt="Pokemon's profile" style={{maxWidth: '150px', maxHeight: '150px' }} />
-                <p style={{margin: '0.5rem'}}>
+                <img
+                    src={this.state.image}
+                    alt={this.state.name}
+                    style={pictureStyle}
+                />
+                <p style={{ margin: "0.5rem" }}>
                     {this.capitalize(this.props.name)}
                 </p>
             </div>
@@ -33,18 +34,23 @@ export class PokemonItem extends Component {
     }
 }
 
+const pictureStyle = {
+    maxWidth: "150px",
+    maxHeight: "150px",
+};
+
 const containerStyle = {
-    background: 'white',
+    background: "white",
     margin: "1rem",
     border: "1px solid",
     borderRadius: "2rem",
-    textAlign: 'center',
-    width: '200px',
-    height: '200px',
-    padding: '1rem',
-    display: 'flex',
-    flexFlow: 'column',
-    justifyContent: 'space-evenly'
+    textAlign: "center",
+    width: "200px",
+    height: "200px",
+    padding: "1rem",
+    display: "flex",
+    flexFlow: "column",
+    justifyContent: "space-evenly",
 };
 
 export default PokemonItem;

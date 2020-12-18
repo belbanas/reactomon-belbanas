@@ -1,11 +1,13 @@
 import "./App.css";
 import React, { Component } from "react";
-import PokemonList from "./components/PokemonList";
 import axios from "axios";
+import PokemonList from "./components/PokemonList";
+import TypeList from "./components/TypeList";
 
 class App extends Component {
     state = {
         pokemons: [],
+        types: [],
     };
 
     componentDidMount() {
@@ -14,36 +16,25 @@ class App extends Component {
             .then((response) =>
                 this.setState({ pokemons: response.data.results })
             );
+        axios
+            .get("https://pokeapi.co/api/v2/type")
+            .then((response) =>
+                this.setState({ types: response.data.results })
+            );
     }
 
     render() {
         return (
             <div className="App" style={appStyle}>
-                <div
-                    className="pokemon-container"
-                    style={pokemonContainerStyle}
-                >
-                    <PokemonList pokemons={this.state.pokemons} />
-                </div>
+                <PokemonList pokemons={this.state.pokemons} />
+                <TypeList types={this.state.types} />
             </div>
         );
     }
 }
 
 const appStyle = {
-    display: "flex",
-    justifyContent: "center",
     background: "gray",
-};
-
-const pokemonContainerStyle = {
-    background: "#fff",
-    display: "flex",
-    flexFlow: "row wrap",
-    justifyContent: "center",
-    margin: "auto 20rem auto 20rem",
-    borderRadius: "1rem",
-    padding: "2rem",
 };
 
 export default App;

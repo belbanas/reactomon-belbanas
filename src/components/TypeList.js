@@ -9,19 +9,11 @@ export class TypeList extends Component {
     );
 
     render() {
-        return <div style={typesContainerStyle}>
-            <h1>Type List</h1><br></br>
+        return <React.Fragment>
+            <h1>Type List</h1>
             {this.getTypes()}
-        </div>
+        </React.Fragment>
     };
 }
-
-const typesContainerStyle = {
-    background: "#fff",
-    margin: "auto 20rem auto 20rem",
-    borderRadius: "1rem",
-    padding: "2rem",
-    textAlign: "center",
-};
 
 export default TypeList;

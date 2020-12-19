@@ -26,8 +26,10 @@ class App extends Component {
     render() {
         return (
             <div className="App" style={appStyle}>
-                <PokemonList pokemons={this.state.pokemons} />
-                <TypeList types={this.state.types} />
+                <div className="contents" style={contentsStyle}>
+                    <PokemonList pokemons={this.state.pokemons} />
+                    <TypeList types={this.state.types} />
+                </div>
             </div>
         );
     }
@@ -36,5 +38,13 @@ class App extends Component {
 const appStyle = {
     background: "gray",
 };
+
+const contentsStyle = {
+    background: "#fff",
+    margin: "auto 20rem auto 20rem",
+    borderRadius: "1rem",
+    padding: "2rem",
+    textAlign: "center",
+}
 
 export default App;

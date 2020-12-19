@@ -9,12 +9,12 @@ export class PokemonList extends Component {
     )
 
     render() {
-        return <div style={contentsStyle}>
+        return <React.Fragment>
             <h1>Pokemons</h1>
             <div style={pokemonContainerStyle}>
             {this.getPokemons()}
             </div>
-            </div>
+            </React.Fragment>
     }
 }
 
@@ -23,13 +23,5 @@ const pokemonContainerStyle = {
     flexFlow: "row wrap",
     justifyContent: "center",
 };
-
-const contentsStyle = {
-    background: "#fff",
-    margin: "auto 20rem auto 20rem",
-    borderRadius: "1rem",
-    padding: "2rem",
-    textAlign: "center",
-}
 
 export default PokemonList;

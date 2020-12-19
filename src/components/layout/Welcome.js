@@ -12,7 +12,8 @@ export class Welcome extends Component {
 }
 
 const welcomeStyle = {
-    padding: "10rem"
+    padding: "10rem",
+    textAlign: "center",
 }
 
 export default Welcome

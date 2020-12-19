@@ -1,8 +1,11 @@
 import "./App.css";
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from "axios";
 import PokemonList from "./components/PokemonList";
 import TypeList from "./components/TypeList";
+import Header from "./components/layout/Header";
+import Welcome from "./components/layout/Welcome";
 
 class App extends Component {
     state = {
@@ -25,18 +28,26 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App" style={appStyle}>
-                <div className="contents" style={contentsStyle}>
-                    <PokemonList pokemons={this.state.pokemons} />
-                    <TypeList types={this.state.types} />
+            <Router>
+                <div className="App" style={appStyle}>
+                    <Header />
+                    <div className="contents" style={contentsStyle}>
+                        <Route exact path="/" component={Welcome} />
+                        <Route path="/pokemons">
+                            <PokemonList pokemons={this.state.pokemons} />
+                        </Route>
+                        <Route path="/types">
+                            <TypeList types={this.state.types} />
+                        </Route>
+                    </div>
                 </div>
-            </div>
+            </Router>
         );
     }
 }
 
 const appStyle = {
-    background: "gray",
+    background: "#adddd7",
 };
 
 const contentsStyle = {
@@ -45,6 +56,7 @@ const contentsStyle = {
     borderRadius: "1rem",
     padding: "2rem",
     textAlign: "center",
-}
+    minHeight: "100vh",
+};
 
 export default App;

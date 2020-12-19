@@ -10,8 +10,10 @@ export class TypeList extends Component {
 
     render() {
         return <React.Fragment>
-            <h1>Type List</h1>
-            {this.getTypes()}
+            <h1 style={{textAlign: 'center'}}>Type List</h1>
+            <ol>
+                {this.getTypes()}
+            </ol>
         </React.Fragment>
     };
 }

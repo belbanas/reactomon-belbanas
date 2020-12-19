@@ -11,7 +11,7 @@ export class TypeList extends Component {
         return (
             <React.Fragment>
                 <h1 style={{ textAlign: "center" }}>Type List</h1>
-                <ol>{this.getTypes()}</ol>
+                <div style={{ textAlign: "center", marginTop: '2rem'}}>{this.getTypes()}</div>
             </React.Fragment>
         );
     }

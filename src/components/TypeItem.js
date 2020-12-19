@@ -7,9 +7,9 @@ export class TypeItem extends Component {
 
     render() {
         return (
-            <li style={{ padding: "1rem" }}>
+            <p style={{ padding: "1rem" }}>
                 {this.capitalize(this.props.name)}
-            </li>
+            </p>
         );
     }
 }

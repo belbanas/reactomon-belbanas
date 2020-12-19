@@ -2,19 +2,22 @@ import React, { Component } from "react";
 import PokemonItem from "./PokemonItem";
 
 export class PokemonList extends Component {
-    getPokemons = () => (
+    getPokemons = () =>
         this.props.pokemons.map((pokemon) => (
-            <PokemonItem key={pokemon.url} name={pokemon.name} url={pokemon.url} />
-        ))
-    )
+            <PokemonItem
+                key={pokemon.url}
+                name={pokemon.name}
+                url={pokemon.url}
+            />
+        ));
 
     render() {
-        return <React.Fragment>
-            <h1>Pokemons</h1>
-            <div style={pokemonContainerStyle}>
-            {this.getPokemons()}
-            </div>
+        return (
+            <React.Fragment>
+                <h1>Pokemons</h1>
+                <div style={pokemonContainerStyle}>{this.getPokemons()}</div>
             </React.Fragment>
+        );
     }
 }
 

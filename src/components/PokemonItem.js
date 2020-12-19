@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 export class PokemonItem extends Component {
     state = {
         image: null,
-        id: null
+        id: null,
     };
 
     componentDidMount() {
         axios.get(this.props.url).then((response) =>
             this.setState({
                 image: response.data.sprites.other.dream_world.front_default,
-                id: response.data.id
+                id: response.data.id,
             })
         );
     }
@@ -61,6 +61,6 @@ const containerStyle = {
 const linkStyle = {
     textDecoration: "none",
     color: "#333",
-}
+};
 
 export default PokemonItem;

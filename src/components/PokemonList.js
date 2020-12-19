@@ -14,7 +14,7 @@ export class PokemonList extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1 style={{textAlign: 'center'}}>Pokemons</h1>
+                <h1 style={{ textAlign: "center" }}>Pokemons</h1>
                 <div style={pokemonContainerStyle}>{this.getPokemons()}</div>
             </React.Fragment>
         );

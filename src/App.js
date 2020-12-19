@@ -11,7 +11,7 @@ import PokemonDetail from "./components/PokemonDetail";
 class App extends Component {
     state = {
         pokemons: [],
-        types: []
+        types: [],
     };
 
     componentDidMount() {
@@ -40,7 +40,7 @@ class App extends Component {
                         <Route path="/types">
                             <TypeList types={this.state.types} />
                         </Route>
-                        <Route path="/pokemon/:id" >
+                        <Route path="/pokemon/:id">
                             <PokemonDetail />
                         </Route>
                     </div>

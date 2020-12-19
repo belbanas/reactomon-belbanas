@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
+import logo from "./pokemon_logo.png";
 
 export class Header extends Component {
     render() {
         return (
             <header style={headerStyle}>
-                <h1 style={titleStyle}>Reactomon</h1>
+                <div style={titleStyle}>
+                    <img src={logo} alt="logo" style={{ maxHeight: "8rem" }} />
+                    <h1>Reactomon</h1>
+                </div>
                 <Navbar />
             </header>
         );

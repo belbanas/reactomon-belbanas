@@ -6,6 +6,7 @@ import PokemonList from "./components/PokemonList";
 import TypeList from "./components/TypeList";
 import Header from "./components/layout/Header";
 import Welcome from "./components/layout/Welcome";
+import PokemonDetail from "./components/PokemonDetail";
 
 class App extends Component {
     state = {
@@ -39,6 +40,9 @@ class App extends Component {
                         <Route path="/types">
                             <TypeList types={this.state.types} />
                         </Route>
+                        <Route path="/pokemon/:id">
+                            <PokemonDetail />
+                        </Route>
                     </div>
                 </div>
             </Router>
@@ -55,7 +59,6 @@ const contentsStyle = {
     margin: "auto 20rem auto 20rem",
     borderRadius: "1rem",
     padding: "2rem",
-    textAlign: "center",
     minHeight: "100vh",
 };
 

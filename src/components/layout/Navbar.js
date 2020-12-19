@@ -5,9 +5,17 @@ export class Navbar extends Component {
     render() {
         return (
             <div className="navbar" style={navbarStyle}>
-                <Link to="/" style={linkStyle}>Home</Link>|
-                <Link to="/pokemons" style={linkStyle}>Pokemons</Link>|
-                <Link to="/types" style={linkStyle}>Types</Link>
+                <Link to="/" style={linkStyle}>
+                    Home
+                </Link>
+                |
+                <Link to="/pokemons" style={linkStyle}>
+                    Pokemons
+                </Link>
+                |
+                <Link to="/types" style={linkStyle}>
+                    Types
+                </Link>
             </div>
         );
     }
@@ -24,6 +32,6 @@ const linkStyle = {
     textDecoration: "none",
     padding: "1rem",
     color: "#333",
-}
+};
 
 export default Navbar;

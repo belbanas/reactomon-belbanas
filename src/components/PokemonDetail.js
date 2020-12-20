@@ -42,51 +42,61 @@ export class PokemonDetail extends Component {
     }
 
     render() {
-        return (
-            <React.Fragment>
-                <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
-                    Profile
-                </h1>
-                <div
-                    style={{
-                        display: "flex",
-                        flexWrap: "row",
-                        justifyContent: "center",
-                    }}
-                >
-                    <img
-                        src={this.state.picture}
-                        alt="Official-Artwork"
-                        style={{ maxWidth: "50%" }}
-                    />
-                    <div className="stats">
-                        <h3 style={{ padding: "1rem 0 1rem 1rem" }}>
-                            Name: {this.state.name}
-                        </h3>
-                        <p style={paragraphStyle}>
-                            Height: {this.state.height}{" "}
-                        </p>
-                        <p style={paragraphStyle}>
-                            Weight {this.state.weight}{" "}
-                        </p>
-                        <p style={paragraphStyle}>HP: {this.state.hp} </p>
-                        <p style={paragraphStyle}>
-                            Attack: {this.state.attack}{" "}
-                        </p>
-                        <p style={paragraphStyle}>
-                            Defense: {this.state.defense}{" "}
-                        </p>
-                        <p style={paragraphStyle}>
-                            Special Attack: {this.state.specialAttack}{" "}
-                        </p>
-                        <p style={paragraphStyle}>
-                            Special Defense: {this.state.specialDefense}{" "}
-                        </p>
-                        <p style={paragraphStyle}>Speed: {this.state.speed} </p>
+        if (this.state.name === null) {
+            return (
+                <React.Fragment>
+                    <h1 style={{ textAlign: "center" }}>Loading...</h1>
+                </React.Fragment>
+            );
+        } else {
+            return (
+                <React.Fragment>
+                    <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
+                        Profile
+                    </h1>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexWrap: "row",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <img
+                            src={this.state.picture}
+                            alt="Official-Artwork"
+                            style={{ maxWidth: "50%" }}
+                        />
+                        <div className="stats">
+                            <h3 style={{ padding: "1rem 0 1rem 1rem" }}>
+                                Name: {this.state.name}
+                            </h3>
+                            <p style={paragraphStyle}>
+                                Height: {this.state.height}{" "}
+                            </p>
+                            <p style={paragraphStyle}>
+                                Weight {this.state.weight}{" "}
+                            </p>
+                            <p style={paragraphStyle}>HP: {this.state.hp} </p>
+                            <p style={paragraphStyle}>
+                                Attack: {this.state.attack}{" "}
+                            </p>
+                            <p style={paragraphStyle}>
+                                Defense: {this.state.defense}{" "}
+                            </p>
+                            <p style={paragraphStyle}>
+                                Special Attack: {this.state.specialAttack}{" "}
+                            </p>
+                            <p style={paragraphStyle}>
+                                Special Defense: {this.state.specialDefense}{" "}
+                            </p>
+                            <p style={paragraphStyle}>
+                                Speed: {this.state.speed}{" "}
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </React.Fragment>
-        );
+                </React.Fragment>
+            );
+        }
     }
 }
 

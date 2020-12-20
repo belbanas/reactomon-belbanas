@@ -1,19 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import Navbar from "./Navbar";
 import logo from "./pokemon_logo.png";
 
-export class Header extends Component {
-    render() {
-        return (
-            <header style={headerStyle}>
-                <div style={titleStyle}>
-                    <img src={logo} alt="logo" style={{ maxHeight: "8rem" }} />
-                    <h1>Reactomon</h1>
-                </div>
-                <Navbar />
-            </header>
-        );
-    }
+function Header() {
+    return (
+        <header style={headerStyle}>
+            <div style={titleStyle}>
+                <img src={logo} alt="logo" style={{ maxHeight: "8rem" }} />
+                <h1>Reactomon</h1>
+            </div>
+            <Navbar />
+        </header>
+    );
 }
 
 const headerStyle = {

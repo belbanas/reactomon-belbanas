@@ -1,17 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 
-export class TypeItem extends Component {
-    capitalize = (str) => {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    };
-
-    render() {
-        return (
-            <p style={{ padding: "1rem" }}>
-                {this.capitalize(this.props.name)}
-            </p>
-        );
-    }
-}
+const TypeItem = (props) => {
+    return (
+        <p style={{ padding: "1rem", textTransform: "capitalize" }}>
+            {props.name}
+        </p>
+    );
+};
 
 export default TypeItem;

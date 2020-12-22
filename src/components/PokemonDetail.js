@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
-export class PokemonDetail extends Component {
-    state = {
+const PokemonDetail = (props) => {
+    const [state, setState] = useState({
         name: null,
         picture: null,
         height: null,
@@ -14,18 +14,14 @@ export class PokemonDetail extends Component {
         specialAttack: null,
         specialDefense: null,
         speed: null,
-    };
+    });
 
-    capitalize = (str) => {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    };
+    const { id } = useParams();
 
-    componentDidMount() {
-        const { id } = this.props.match.params;
-
+    useEffect(() => {
         axios.get("https://pokeapi.co/api/v2/pokemon/" + id).then((response) =>
-            this.setState({
-                name: this.capitalize(response.data.name),
+            setState({
+                name: response.data.name,
                 picture:
                     response.data.sprites.other["official-artwork"]
                         .front_default,
@@ -39,69 +35,62 @@ export class PokemonDetail extends Component {
                 speed: response.data.stats[5].base_stat,
             })
         );
-    }
+    }, [id]);
 
-    render() {
-        if (this.state.name === null) {
-            return (
-                <React.Fragment>
-                    <h1 style={{ textAlign: "center" }}>Loading...</h1>
-                </React.Fragment>
-            );
-        } else {
-            return (
-                <React.Fragment>
-                    <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
-                        Profile
-                    </h1>
-                    <div
-                        style={{
-                            display: "flex",
-                            flexWrap: "row",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <img
-                            src={this.state.picture}
-                            alt="Official-Artwork"
-                            style={{ maxWidth: "50%" }}
-                        />
-                        <div className="stats">
-                            <h3 style={{ padding: "1rem 0 1rem 1rem" }}>
-                                Name: {this.state.name}
-                            </h3>
-                            <p style={paragraphStyle}>
-                                Height: {this.state.height}{" "}
-                            </p>
-                            <p style={paragraphStyle}>
-                                Weight {this.state.weight}{" "}
-                            </p>
-                            <p style={paragraphStyle}>HP: {this.state.hp} </p>
-                            <p style={paragraphStyle}>
-                                Attack: {this.state.attack}{" "}
-                            </p>
-                            <p style={paragraphStyle}>
-                                Defense: {this.state.defense}{" "}
-                            </p>
-                            <p style={paragraphStyle}>
-                                Special Attack: {this.state.specialAttack}{" "}
-                            </p>
-                            <p style={paragraphStyle}>
-                                Special Defense: {this.state.specialDefense}{" "}
-                            </p>
-                            <p style={paragraphStyle}>
-                                Speed: {this.state.speed}{" "}
-                            </p>
-                        </div>
+    if (state.name === null) {
+        return (
+            <React.Fragment>
+                <h1 style={{ textAlign: "center" }}>Loading...</h1>
+            </React.Fragment>
+        );
+    } else {
+        return (
+            <React.Fragment>
+                <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
+                    Profile
+                </h1>
+                <div
+                    style={{
+                        display: "flex",
+                        flexWrap: "row",
+                        justifyContent: "center",
+                    }}
+                >
+                    <img
+                        src={state.picture}
+                        alt="Official-Artwork"
+                        style={{ maxWidth: "50%" }}
+                    />
+                    <div className="stats">
+                        <h3
+                            style={{
+                                padding: "1rem 0 1rem 1rem",
+                                textTransform: "capitalize",
+                            }}
+                        >
+                            Name: {state.name}
+                        </h3>
+                        <p style={paragraphStyle}>Height: {state.height} </p>
+                        <p style={paragraphStyle}>Weight {state.weight} </p>
+                        <p style={paragraphStyle}>HP: {state.hp} </p>
+                        <p style={paragraphStyle}>Attack: {state.attack} </p>
+                        <p style={paragraphStyle}>Defense: {state.defense} </p>
+                        <p style={paragraphStyle}>
+                            Special Attack: {state.specialAttack}{" "}
+                        </p>
+                        <p style={paragraphStyle}>
+                            Special Defense: {state.specialDefense}{" "}
+                        </p>
+                        <p style={paragraphStyle}>Speed: {state.speed} </p>
                     </div>
-                </React.Fragment>
-            );
-        }
+                </div>
+            </React.Fragment>
+        );
     }
-}
+};
 
 const paragraphStyle = {
     padding: "0.5rem 0rem 0.5rem 1rem",
 };
 
-export default withRouter(PokemonDetail);
+export default PokemonDetail;

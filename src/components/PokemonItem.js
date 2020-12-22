@@ -1,43 +1,30 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export class PokemonItem extends Component {
-    state = {
-        image: null,
-        id: null,
-    };
+const PokemonItem = (props) => {
+    const [imageUrl, setImageUrl] = useState();
+    const [id, setId] = useState();
+    const name = props.name;
 
-    componentDidMount() {
-        axios.get(this.props.url).then((response) =>
-            this.setState({
-                image: response.data.sprites.other.dream_world.front_default,
-                id: response.data.id,
-            })
-        );
-    }
+    useEffect(() => {
+        axios.get(props.url).then((response) => {
+            setImageUrl(response.data.sprites.other.dream_world.front_default);
+            setId(response.data.id);
+        });
+    }, [props.url]);
 
-    capitalize = (str) => {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    };
-
-    render() {
-        return (
-            <Link to={`pokemon/${this.state.id}`} style={linkStyle}>
-                <div className="pokemon-item-container" style={containerStyle}>
-                    <img
-                        src={this.state.image}
-                        alt={this.state.name}
-                        style={pictureStyle}
-                    />
-                    <p style={{ margin: "0.5rem" }}>
-                        {this.capitalize(this.props.name)}
-                    </p>
-                </div>
-            </Link>
-        );
-    }
-}
+    return (
+        <Link to={`pokemon/${id}`} style={linkStyle}>
+            <div className="pokemon-item-container" style={containerStyle}>
+                <img src={imageUrl} alt={name} style={pictureStyle} />
+                <p style={{ margin: "0.5rem", textTransform: "capitalize" }}>
+                    {name}
+                </p>
+            </div>
+        </Link>
+    );
+};
 
 const pictureStyle = {
     maxWidth: "150px",

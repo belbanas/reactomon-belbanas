@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from "axios";
 import PokemonList from "./components/PokemonList";
@@ -8,47 +8,39 @@ import Header from "./components/layout/Header";
 import Welcome from "./components/layout/Welcome";
 import PokemonDetail from "./components/PokemonDetail";
 
-class App extends Component {
-    state = {
-        pokemons: [],
-        types: [],
-    };
+const App = (props) => {
+    const [pokemons, setPokemons] = useState([]);
+    const [types, setTypes] = useState([]);
 
-    componentDidMount() {
+    useEffect(() => {
         axios
             .get("https://pokeapi.co/api/v2/pokemon")
-            .then((response) =>
-                this.setState({ pokemons: response.data.results })
-            );
+            .then((response) => setPokemons(response.data.results));
         axios
             .get("https://pokeapi.co/api/v2/type")
-            .then((response) =>
-                this.setState({ types: response.data.results })
-            );
-    }
+            .then((response) => setTypes(response.data.results));
+    }, []);
 
-    render() {
-        return (
-            <Router>
-                <div className="App" style={appStyle}>
-                    <Header />
-                    <div className="contents" style={contentsStyle}>
-                        <Route exact path="/" component={Welcome} />
-                        <Route path="/pokemons">
-                            <PokemonList pokemons={this.state.pokemons} />
-                        </Route>
-                        <Route path="/types">
-                            <TypeList types={this.state.types} />
-                        </Route>
-                        <Route path="/pokemon/:id">
-                            <PokemonDetail />
-                        </Route>
-                    </div>
+    return (
+        <Router>
+            <div className="App" style={appStyle}>
+                <Header />
+                <div className="contents" style={contentsStyle}>
+                    <Route exact path="/" component={Welcome} />
+                    <Route path="/pokemons">
+                        <PokemonList pokemons={pokemons} />
+                    </Route>
+                    <Route path="/types">
+                        <TypeList types={types} />
+                    </Route>
+                    <Route path="/pokemon/:id">
+                        <PokemonDetail />
+                    </Route>
                 </div>
-            </Router>
-        );
-    }
-}
+            </div>
+        </Router>
+    );
+};
 
 const appStyle = {
     background: "#adddd7",

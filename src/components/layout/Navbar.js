@@ -1,25 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-export class Navbar extends Component {
-    render() {
-        return (
-            <div className="navbar" style={navbarStyle}>
-                <Link to="/" style={linkStyle}>
-                    Home
-                </Link>
-                |
-                <Link to="/pokemons" style={linkStyle}>
-                    Pokemons
-                </Link>
-                |
-                <Link to="/types" style={linkStyle}>
-                    Types
-                </Link>
-            </div>
-        );
-    }
-}
+const Navbar = (props) => {
+    return (
+        <div className="navbar" style={navbarStyle}>
+            <Link to="/" style={linkStyle}>
+                Home
+            </Link>
+            |
+            <Link to="/pokemons" style={linkStyle}>
+                Pokemons
+            </Link>
+            |
+            <Link to="/types" style={linkStyle}>
+                Types
+            </Link>
+        </div>
+    );
+};
 
 const navbarStyle = {
     background: "#fff",

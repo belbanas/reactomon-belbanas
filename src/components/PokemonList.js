@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import PokemonItem from "./PokemonItem";
 
-export class PokemonList extends Component {
-    getPokemons = () =>
-        this.props.pokemons.map((pokemon) => (
+const PokemonList = (props) => {
+    const getPokemons = () =>
+        props.pokemons.map((pokemon) => (
             <PokemonItem
                 key={pokemon.url}
                 name={pokemon.name}
@@ -11,15 +11,13 @@ export class PokemonList extends Component {
             />
         ));
 
-    render() {
-        return (
-            <React.Fragment>
-                <h1 style={{ textAlign: "center" }}>Pokemons</h1>
-                <div style={pokemonContainerStyle}>{this.getPokemons()}</div>
-            </React.Fragment>
-        );
-    }
-}
+    return (
+        <React.Fragment>
+            <h1 style={{ textAlign: "center" }}>Pokemons</h1>
+            <div style={pokemonContainerStyle}>{getPokemons()}</div>
+        </React.Fragment>
+    );
+};
 
 const pokemonContainerStyle = {
     display: "flex",

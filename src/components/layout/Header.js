@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import logo from "./pokemon_logo.png";
 
-function Header() {
+const Header = (props) => {
     return (
         <header style={headerStyle}>
             <div style={titleStyle}>
@@ -12,7 +12,7 @@ function Header() {
             <Navbar />
         </header>
     );
-}
+};
 
 const headerStyle = {
     textAlign: "center",

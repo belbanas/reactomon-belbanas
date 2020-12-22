@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+const Navbar = (props) => {
     return (
         <div className="navbar" style={navbarStyle}>
             <Link to="/" style={linkStyle}>
@@ -17,7 +17,7 @@ function Navbar() {
             </Link>
         </div>
     );
-}
+};
 
 const navbarStyle = {
     background: "#fff",

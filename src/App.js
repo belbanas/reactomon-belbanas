@@ -19,7 +19,7 @@ const Contents = styled.div`
     border-radius: 1rem;
     padding: 2rem;
     min-height: 100vh;
-`
+`;
 
 const App = (props) => {
     const [pokemons, setPokemons] = useState([]);

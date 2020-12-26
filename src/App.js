@@ -2,11 +2,24 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from "axios";
+import styled from "styled-components";
 import PokemonList from "./components/PokemonList";
 import TypeList from "./components/TypeList";
 import Header from "./components/layout/Header";
 import Welcome from "./components/layout/Welcome";
 import PokemonDetail from "./components/PokemonDetail";
+
+const Application = styled.div`
+    background: #adddd7;
+`;
+
+const Contents = styled.div`
+    background: #fff;
+    margin: auto 20rem auto 20rem;
+    border-radius: 1rem;
+    padding: 2rem;
+    min-height: 100vh;
+`
 
 const App = (props) => {
     const [pokemons, setPokemons] = useState([]);
@@ -23,9 +36,9 @@ const App = (props) => {
 
     return (
         <Router>
-            <div className="App" style={appStyle}>
+            <Application className="app">
                 <Header />
-                <div className="contents" style={contentsStyle}>
+                <Contents className="contents">
                     <Route exact path="/" component={Welcome} />
                     <Route path="/pokemons">
                         <PokemonList pokemons={pokemons} />
@@ -36,22 +49,10 @@ const App = (props) => {
                     <Route path="/pokemon/:id">
                         <PokemonDetail />
                     </Route>
-                </div>
-            </div>
+                </Contents>
+            </Application>
         </Router>
     );
-};
-
-const appStyle = {
-    background: "#adddd7",
-};
-
-const contentsStyle = {
-    background: "#fff",
-    margin: "auto 20rem auto 20rem",
-    borderRadius: "1rem",
-    padding: "2rem",
-    minHeight: "100vh",
 };
 
 export default App;

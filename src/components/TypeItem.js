@@ -1,11 +1,13 @@
 import React from "react";
+import styled from "styled-components";
+
+const PokemonTypes = styled.p`
+    padding: 1rem;
+    text-transform: capitalize;
+`;
 
 const TypeItem = (props) => {
-    return (
-        <p style={{ padding: "1rem", textTransform: "capitalize" }}>
-            {props.name}
-        </p>
-    );
+    return <PokemonTypes>{props.name}</PokemonTypes>;
 };
 
 export default TypeItem;

@@ -1,6 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import styled from "styled-components";
+
+const Stat = styled.p`
+    padding: 0.5rem 0rem 0.5rem 1rem;
+`;
+
+const PokemonName = styled.h3`
+    padding: 1rem 0 1rem 1rem;
+    text-transform: capitalize;
+`;
+
+const PageTitle = styled.h1`
+    text-align: center;
+    margin-bottom: 2rem;
+`;
+
+const Card = styled.div`
+    display: flex;
+    flex-wrap: row;
+    justify-content: center;
+`;
+
+const Image = styled.img`
+    max-width: 50%;
+`;
+
+const Loading = styled.h1`
+    text-align: center;
+`;
 
 const PokemonDetail = (props) => {
     const [state, setState] = useState({
@@ -40,57 +69,30 @@ const PokemonDetail = (props) => {
     if (state.name === null) {
         return (
             <React.Fragment>
-                <h1 style={{ textAlign: "center" }}>Loading...</h1>
+                <Loading>Loading...</Loading>
             </React.Fragment>
         );
     } else {
         return (
             <React.Fragment>
-                <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
-                    Profile
-                </h1>
-                <div
-                    style={{
-                        display: "flex",
-                        flexWrap: "row",
-                        justifyContent: "center",
-                    }}
-                >
-                    <img
-                        src={state.picture}
-                        alt="Official-Artwork"
-                        style={{ maxWidth: "50%" }}
-                    />
+                <PageTitle>Profile</PageTitle>
+                <Card>
+                    <Image src={state.picture} alt="Official-Artwork" />
                     <div className="stats">
-                        <h3
-                            style={{
-                                padding: "1rem 0 1rem 1rem",
-                                textTransform: "capitalize",
-                            }}
-                        >
-                            Name: {state.name}
-                        </h3>
-                        <p style={paragraphStyle}>Height: {state.height} </p>
-                        <p style={paragraphStyle}>Weight {state.weight} </p>
-                        <p style={paragraphStyle}>HP: {state.hp} </p>
-                        <p style={paragraphStyle}>Attack: {state.attack} </p>
-                        <p style={paragraphStyle}>Defense: {state.defense} </p>
-                        <p style={paragraphStyle}>
-                            Special Attack: {state.specialAttack}{" "}
-                        </p>
-                        <p style={paragraphStyle}>
-                            Special Defense: {state.specialDefense}{" "}
-                        </p>
-                        <p style={paragraphStyle}>Speed: {state.speed} </p>
+                        <PokemonName>Name: {state.name}</PokemonName>
+                        <Stat>Height: {state.height} </Stat>
+                        <Stat>Weight {state.weight} </Stat>
+                        <Stat>HP: {state.hp} </Stat>
+                        <Stat>Attack: {state.attack} </Stat>
+                        <Stat>Defense: {state.defense} </Stat>
+                        <Stat>Special Attack: {state.specialAttack} </Stat>
+                        <Stat>Special Defense: {state.specialDefense} </Stat>
+                        <Stat>Speed: {state.speed} </Stat>
                     </div>
-                </div>
+                </Card>
             </React.Fragment>
         );
     }
-};
-
-const paragraphStyle = {
-    padding: "0.5rem 0rem 0.5rem 1rem",
 };
 
 export default PokemonDetail;

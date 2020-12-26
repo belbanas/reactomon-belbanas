@@ -1,28 +1,33 @@
 import React from "react";
 import Navbar from "./Navbar";
 import logo from "./pokemon_logo.png";
+import styled from "styled-components";
+
+const HeaderHeader = styled.header`
+    text-align: center;
+    margin: auto 20rem auto 20rem;
+`;
+
+const Title = styled.div`
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+`;
+
+const Image = styled.img`
+    max-height: 8rem;
+`;
 
 const Header = (props) => {
     return (
-        <header style={headerStyle}>
-            <div style={titleStyle}>
-                <img src={logo} alt="logo" style={{ maxHeight: "8rem" }} />
+        <HeaderHeader>
+            <Title>
+                <Image src={logo} alt="logo" />
                 <h1>Reactomon</h1>
-            </div>
+            </Title>
             <Navbar />
-        </header>
+        </HeaderHeader>
     );
-};
-
-const headerStyle = {
-    textAlign: "center",
-    margin: "auto 20rem auto 20rem",
-};
-
-const titleStyle = {
-    background: "white",
-    borderRadius: "1rem",
-    padding: "1rem",
 };
 
 export default Header;

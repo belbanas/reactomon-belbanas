@@ -1,35 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const NavbarDiv = styled.div`
+    background: #fff;
+    border-radius: 1rem;
+    border: 1px solid;
+    padding: 1rem;
+`;
+
+const Link = styled.a`
+    text-decoration: none;
+    padding: 1rem;
+    color: #333;
+`;
 
 const Navbar = (props) => {
     return (
-        <div className="navbar" style={navbarStyle}>
-            <Link to="/" style={linkStyle}>
-                Home
-            </Link>
-            |
-            <Link to="/pokemons" style={linkStyle}>
-                Pokemons
-            </Link>
-            |
-            <Link to="/types" style={linkStyle}>
-                Types
-            </Link>
-        </div>
+        <NavbarDiv className="navbar">
+            <Link href="/">Home</Link>|<Link href="/pokemons">Pokemons</Link>|
+            <Link href="/types">Types</Link>|
+        </NavbarDiv>
     );
-};
-
-const navbarStyle = {
-    background: "#fff",
-    borderRadius: "1rem",
-    border: "1px solid",
-    padding: "1rem",
-};
-
-const linkStyle = {
-    textDecoration: "none",
-    padding: "1rem",
-    color: "#333",
 };
 
 export default Navbar;

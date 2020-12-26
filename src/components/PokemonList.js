@@ -1,5 +1,16 @@
 import React from "react";
 import PokemonItem from "./PokemonItem";
+import styled from "styled-components";
+
+const PokemonContainer = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+`;
+
+const PageTitle = styled.h1`
+    text-align: center;
+`;
 
 const PokemonList = (props) => {
     const getPokemons = () =>
@@ -13,16 +24,10 @@ const PokemonList = (props) => {
 
     return (
         <React.Fragment>
-            <h1 style={{ textAlign: "center" }}>Pokemons</h1>
-            <div style={pokemonContainerStyle}>{getPokemons()}</div>
+            <PageTitle>Pokemons</PageTitle>
+            <PokemonContainer>{getPokemons()}</PokemonContainer>
         </React.Fragment>
     );
-};
-
-const pokemonContainerStyle = {
-    display: "flex",
-    flexFlow: "row wrap",
-    justifyContent: "center",
 };
 
 export default PokemonList;

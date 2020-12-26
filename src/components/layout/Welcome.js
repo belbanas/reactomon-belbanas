@@ -1,17 +1,21 @@
 import React from "react";
+import styled from "styled-components";
+
+const WelcomeDiv = styled.div`
+    padding: 10rem;
+    text-align: center;
+`;
+const Paragraph = styled.div`
+    padding: 1rem;
+`;
 
 const Welcome = (props) => {
     return (
-        <div className="welcome" style={welcomeStyle}>
+        <WelcomeDiv className="welcome">
             <h2>Welcome to my Reactomon page</h2>
-            <p style={{ padding: "1rem" }}>Please choose from the menu above</p>
-        </div>
+            <Paragraph>Please choose from the menu above</Paragraph>
+        </WelcomeDiv>
     );
-};
-
-const welcomeStyle = {
-    padding: "10rem",
-    textAlign: "center",
 };
 
 export default Welcome;

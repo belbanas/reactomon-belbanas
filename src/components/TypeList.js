@@ -1,5 +1,15 @@
 import React from "react";
 import TypeItem from "./TypeItem";
+import styled from "styled-components";
+
+const PageTitle = styled.h1`
+    text-align: center;
+`;
+
+const PokemonTypes = styled.div`
+    text-align: center;
+    margin-top: 2rem;
+`;
 
 const TypeList = (props) => {
     const getTypes = () =>
@@ -7,10 +17,8 @@ const TypeList = (props) => {
 
     return (
         <React.Fragment>
-            <h1 style={{ textAlign: "center" }}>Type List</h1>
-            <div style={{ textAlign: "center", marginTop: "2rem" }}>
-                {getTypes()}
-            </div>
+            <PageTitle>Type List</PageTitle>
+            <PokemonTypes>{getTypes()}</PokemonTypes>
         </React.Fragment>
     );
 };

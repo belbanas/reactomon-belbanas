@@ -32,7 +32,7 @@ const Contents = styled.div`
 const App = (props) => {
     const [pokemons, setPokemons] = useState([]);
     const [types, setTypes] = useState([]);
-    const [theme, setTheme] = useState('LightTheme');
+    const [theme] = useState("LightTheme");
 
     useEffect(() => {
         axios
@@ -44,7 +44,7 @@ const App = (props) => {
     }, []);
 
     return (
-        <ThemeProvider theme={theme === 'DarkTheme' ? darkTheme : lightTheme}>
+        <ThemeProvider theme={theme === "DarkTheme" ? darkTheme : lightTheme}>
             <Router>
                 <Application className="app">
                     <Header />

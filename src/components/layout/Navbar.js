@@ -18,7 +18,7 @@ const Navbar = (props) => {
     return (
         <NavbarDiv className="navbar">
             <Link href="/">Home</Link>|<Link href="/pokemons">Pokemons</Link>|
-            <Link href="/types">Types</Link>
+            <Link href="/types">Types</Link>|
         </NavbarDiv>
     );
 };

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
+import AddPokemon from "./AddPokemon";
+import CatchedPokemons from "./CatchedPokemons";
 
 const Stat = styled.p`
     padding: 0.5rem 0rem 0.5rem 1rem;
@@ -90,6 +92,8 @@ const PokemonDetail = (props) => {
                         <Stat>Speed: {state.speed} </Stat>
                     </div>
                 </Card>
+                <AddPokemon name={state.name} />
+                <CatchedPokemons />
             </React.Fragment>
         );
     }

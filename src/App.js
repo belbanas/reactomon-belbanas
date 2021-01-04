@@ -2,12 +2,14 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from "axios";
-import styled, { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import PokemonList from "./components/PokemonList";
 import TypeList from "./components/TypeList";
 import Header from "./components/layout/Header";
 import Welcome from "./components/layout/Welcome";
 import PokemonDetail from "./components/PokemonDetail";
+import CatchedPokemons from "./components/CatchedPokemons";
+import { PokemonProvider } from "./components/PokemonContext";
 
 const lightTheme = {
     backgroundColor: "#adddd7",
@@ -29,10 +31,21 @@ const Contents = styled.div`
     min-height: 80vh;
 `;
 
-const App = (props) => {
+const App = () => {
     const [pokemons, setPokemons] = useState([]);
     const [types, setTypes] = useState([]);
-    const [theme] = useState("LightTheme");
+    const [theme, setTheme] = useState("LightTheme");
+    const [catchedPokemons, setCatchedPokemons] = useState([
+        {
+            name: "Proba1",
+        },
+        {
+            name: "Proba2",
+        },
+        {
+            name: "Proba3",
+        },
+    ]);
 
     useEffect(() => {
         axios
@@ -45,23 +58,37 @@ const App = (props) => {
 
     return (
         <ThemeProvider theme={theme === "DarkTheme" ? darkTheme : lightTheme}>
-            <Router>
-                <Application className="app">
-                    <Header />
-                    <Contents className="contents">
-                        <Route exact path="/" component={Welcome} />
-                        <Route path="/pokemons">
-                            <PokemonList pokemons={pokemons} />
-                        </Route>
-                        <Route path="/types">
-                            <TypeList types={types} />
-                        </Route>
-                        <Route path="/pokemon/:id">
-                            <PokemonDetail />
-                        </Route>
-                    </Contents>
-                </Application>
-            </Router>
+            <PokemonProvider catched={catchedPokemons}>
+                <Router>
+                    <Application className="app">
+                        <Header />
+                        <button
+                            onClick={(e) =>
+                                setTheme(
+                                    theme === "DarkTheme"
+                                        ? "LightTheme"
+                                        : "DarkTheme"
+                                )}>
+                            ToggleTheme
+                        </button>
+                        <Contents className="contents">
+                            <Route exact path="/" component={Welcome} />
+                            <Route path="/pokemons">
+                                <PokemonList pokemons={pokemons} />
+                            </Route>
+                            <Route path="/types">
+                                <TypeList types={types} />
+                            </Route>
+                            <Route path="/pokemon/:id">
+                                <PokemonDetail />
+                            </Route>
+                            <Route path="/catched">
+                                <CatchedPokemons />
+                            </Route>
+                        </Contents>
+                    </Application>
+                </Router>
+            </PokemonProvider>
         </ThemeProvider>
     );
 };

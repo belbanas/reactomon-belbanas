@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import AddPokemon from "./AddPokemon";
 
-const Link = styled.a`
+const Link2 = styled.a`
     text-decoration: none;
     color: #333;
 `;
@@ -45,10 +46,11 @@ const PokemonItem = (props) => {
     }, [props.url]);
 
     return (
-        <Link href={`pokemon/${id}`}>
+        <Link to={`pokemon/${id}`}>
             <Card className="pokemon-item-container">
                 <Image src={imageUrl} alt={name} />
                 <PokemonName>{name}</PokemonName>
+                <AddPokemon name={name} />
             </Card>
         </Link>
     );
